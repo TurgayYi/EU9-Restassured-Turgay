@@ -64,6 +64,8 @@ public class ORDSApiWithJasonPath extends HrTestBase {
         List<String> allNames = jsonPath.getList("items.findAll {it.salary > 10000}.first_name");
         System.out.println(allNames);
 
+        //
+
     }
 
 }

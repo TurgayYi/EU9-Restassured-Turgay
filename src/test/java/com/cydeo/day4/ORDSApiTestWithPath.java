@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -74,7 +75,6 @@ public class ORDSApiTestWithPath extends HrTestBase {
 
         Response response = given().accept(ContentType.JSON)
                 .and().queryParam("q", "{\"job_id\": \"IT_PROG\"}")
-                .log().all()
                 .when()
                 .get("/employees");
 
@@ -91,6 +91,17 @@ public class ORDSApiTestWithPath extends HrTestBase {
             System.out.println("eachJobID = " + eachJobID);
             assertEquals("IT_PROG",eachJobID);
         }
+
+
+        //print each name of IT_PROGs
+
+        List<String> allNames = response.path("items.first_name");
+
+        for (String name : allNames) {
+            System.out.println(name);
+        }
+
+
 
 
 

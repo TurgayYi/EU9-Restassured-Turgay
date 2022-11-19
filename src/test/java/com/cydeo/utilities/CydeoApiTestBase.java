@@ -10,7 +10,7 @@ public abstract class CydeoApiTestBase {
     @BeforeAll
     public static void init(){
 
-        baseURI = "https://api.training.cydeo.com";
+        baseURI = ConfigurationReader.getProperty("cydeoUrl");
 
     }
 

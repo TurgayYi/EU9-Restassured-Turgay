@@ -86,7 +86,7 @@ public class ORDSHamcrestTest extends HrTestBase {
         assertThat(jsonPath.getList("items.first_name"),containsInRelativeOrder("Alexander","Bruce","David","Valli","Diana"));
 
 
-//2.08 de kaldı
+
 
 
 

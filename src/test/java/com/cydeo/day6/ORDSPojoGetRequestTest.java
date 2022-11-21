@@ -50,8 +50,55 @@ public class ORDSPojoGetRequestTest extends HrTestBase {
 
     }
 
+   /* send a get request to regions
+        verify that region ids are 1,2,3,4
+        verify that regions names Europe ,Americas , Asia, Middle East and Africa
+        verify that count is 4
+        try to use pojo as much as possible
+        ignore non used fields
+
+     */
+
+    @DisplayName("GET request to region only some fields test")
+    @Test
+    public void regionPojoTest(){
+        //send a get request and save everthing inside the regions object
+        //since we prepare pojo also for the all properties we dont need to use any path so as() method is enough
+        Regions regions = get("/regions").then().statusCode(200).extract().response().as(Regions.class);
+
+        //verify count is 4
+        assertThat(regions.getCount(),is(4));
+        //create empty list to store values
+        List<String> regionNames = new ArrayList<>();
+        List<Integer> regionIds = new ArrayList<>();
+
+        //get list of regions out of regions object
+        List<Region> items = regions.getItems();
+
+        //loop through each of the region, save their ids and names to empty list that we prepare
+        for (Region region : items) {
+            regionIds.add(region.getRegionId());
+            regionNames.add(region.getRegion_name());
+        }
+        System.out.println("regionIds = " + regionIds);
+        System.out.println("regionNames = " + regionNames);
+        //prepare expected result
+        List<Integer> expectedRegionIds = Arrays.asList(1,2,3,4);
+        List<String> expectedRegionNames = Arrays.asList("Europe", "Americas", "Asia", "Middle East and Africa");
+
+        //compare two result
+        assertThat(regionIds,is(expectedRegionIds));
+        assertThat(regionNames,is(equalTo(expectedRegionNames)));
+
+
+        }
+
+    }
 
 
 
 
-}
+
+
+
+

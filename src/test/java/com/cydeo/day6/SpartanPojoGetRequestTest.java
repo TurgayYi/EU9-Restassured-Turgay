@@ -95,5 +95,20 @@ public class SpartanPojoGetRequestTest extends SpartanTestBase {
 
     }
 
+    @DisplayName("GET /spartans/search and save as List<Spartan>")
+    @Test
+    public void test4(){
+
+        List<Spartan> spartanList = given().accept(ContentType.JSON).and().queryParams("nameContains", "j",
+                        "gender", "Male")
+                .when()
+                .get("/api/spartans/search")
+                .then().statusCode(200)
+                .extract().jsonPath().getList("content", Spartan.class);
+
+        System.out.println("spartanList.get(1) = " + spartanList.get(1));
+
+    }
+
 
 }

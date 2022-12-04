@@ -1,21 +1,23 @@
 package com.cydeo.day8;
 
+import com.cydeo.utilities.BookItBase;
 import io.restassured.http.ContentType;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
-public class BookItTest {
+public class BookItTest extends BookItBase {
 
+    /*
     @BeforeAll
     public static void init(){
         baseURI = "https://cybertek-reservation-api-qa.herokuapp.com";
 
     }
+
+     */
     //save baseurl inside this variable so that we dont need to type each http method.
     String accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxMTUxNiIsImF1ZCI6InRlYWNoZXIifQ.saFcTsRyMJQj1e8jhya1zpxngBggh5fC3lGsGyBCrQs";
 
@@ -39,6 +41,9 @@ public class BookItTest {
 
 
     }
+
+
+
 
 
 }

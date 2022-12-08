@@ -27,6 +27,7 @@ public class ResponseTimeTest extends SpartanAuthTestBase {
 
         System.out.println("response.getTime() = " + response.getTime());
 
-
     }
+    
+
 }
